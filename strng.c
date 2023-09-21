@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * _isdigit - is digit
+ * di - checks if character is a digit
  * @c: character
- * Return: 1 or 0 if not
+ * Return: 1 if true, 0 if false
 */
-int _isdigit(int c)
+int di(int c)
 {
 	if ((c >= 48 && c <= 57) || c == '-')
 	{
@@ -18,17 +18,17 @@ int _isdigit(int c)
 }
 
 /**
- * isinteger - is integer
+ * isi - checks if string is integer
  * @str: string
- * Return: 0 if is not int
+ * Return: 0 if not integer
 */
-int isinteger(char *str)
+int isi(char *str)
 {
 	int i = 0;
 
 	while (str[i] != '\0')
 	{
-		if (_isdigit(str[i]) == 0)
+		if (di(str[i]) == 0)
 			return (0);
 		i++;
 	}

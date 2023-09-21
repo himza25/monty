@@ -1,42 +1,43 @@
 #include "monty.h"
+
 /**
-* mod - that gives modulo
-* @stack: pointer to stack
-* @line_number: giver number of line
-*/
-void mod(stack_t **stack, unsigned int line_number)
+ * md - that gives modulo
+ * @stack: pointer to stack
+ * @ln: line number
+ */
+void md(stack_t **stack, unsigned int ln)
 {
 	if (!((*stack) && (*stack)->next))
-		error_mod(stack, line_number);
+		emd(stack, ln);
 	if ((*stack)->n == 0)
-		error_math(stack, line_number);
+		emth(stack, ln);
 	(*stack)->next->n %= (*stack)->n;
-	pop(stack, line_number);
+	pop(stack, ln);
 }
 
 /**
-* pchar - that print a char at the top of stack
-* @stack: pointer to stack
-* @line_number: giver number of line
-*/
-void pchar(stack_t **stack, unsigned int line_number)
+ * pc - that prints a char at the top of stack
+ * @stack: pointer to stack
+ * @ln: line number
+ */
+void pc(stack_t **stack, unsigned int ln)
 {
 	if (!(*stack))
-		error_pchar_empty(stack, line_number);
+		epc1(stack, ln);
 	if ((*stack)->n > 127 || (*stack)->n < 0)
-		error_not_char(stack, line_number);
+		epc2(stack, ln);
 	printf("%c\n", (*stack)->n);
 }
 
 /**
- * pstr - print a sting from code ascii
+ * psr - prints a string from ASCII code
  * @stack: pointer to stack
- * @line_number: giver number of line
-*/
-void pstr(stack_t **stack, unsigned int line_number)
+ * @ln: line number
+ */
+void psr(stack_t **stack, unsigned int ln)
 {
 	stack_t *node = *stack;
-	(void)line_number;
+	(void)ln;
 
 	while (node)
 	{
@@ -49,15 +50,15 @@ void pstr(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * rotl - rotates the stack to the top.
+ * rl - rotates the stack to the top
  * @stack: pointer to stack
- * @line_number: giver number of line
-*/
-void rotl(stack_t **stack, unsigned int line_number)
+ * @ln: line number
+ */
+void rl(stack_t **stack, unsigned int ln)
 {
 	stack_t *tmp = *stack;
 	int top;
-	(void)line_number;
+	(void)ln;
 
 	while (tmp)
 	{
@@ -75,15 +76,15 @@ void rotl(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * rotr - rotates the stack to the tail.
+ * rr - rotates the stack to the tail
  * @stack: pointer to stack
- * @line_number: giver number of line
-*/
-void rotr(stack_t **stack, unsigned int line_number)
+ * @ln: line number
+ */
+void rr(stack_t **stack, unsigned int ln)
 {
 	stack_t *tmp = *stack;
 	int top;
-	(void)line_number;
+	(void)ln;
 
 	while (tmp && tmp->next)
 		tmp = tmp->next;

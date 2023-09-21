@@ -1,17 +1,17 @@
 #include "monty.h"
 
 /**
- * pushstack - add node at first
- * @head: pinter to address of head of list
- * @n: the value of the elment
- * Return: the head of list
+ * ps - add node at first
+ * @head: pinter to head of list
+ * @n: value of the elment
+ * Return: new head
 */
-stack_t *pushstack(stack_t **head, int n)
+stack_t *ps(stack_t **head, int n)
 {
 	stack_t *new;
 
 	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	if (!new)
 		return (NULL);
 	new->n = n;
 	new->next = *head;
@@ -22,14 +22,13 @@ stack_t *pushstack(stack_t **head, int n)
 	return (*head);
 }
 
-
 /**
- * pushqueue - adds a new node at the end
+ * pq - adds node at the end
+ * @head: head
  * @n: value
- * @head: point to head
- * Return: the new list
+ * Return: new list
 */
-stack_t *pushqueue(stack_t **head, int n)
+stack_t *pq(stack_t **head, int n)
 {
 	stack_t *tmp, *reset = *head, *new = malloc(sizeof(stack_t));
 
@@ -54,12 +53,11 @@ stack_t *pushqueue(stack_t **head, int n)
 	return (*head);
 }
 
-
 /**
- * free_dlistint - frees a dlistint_t list.
- * @head: pointer to head
+ * fd - frees a list.
+ * @head: head
 */
-void free_dlistint(stack_t *head)
+void fd(stack_t *head)
 {
 	stack_t *tmp;
 
