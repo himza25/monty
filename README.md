@@ -1,43 +1,42 @@
-Monty Interpreter
-Developed by himza25
-This project is an interpreter for Monty ByteCodes files. Monty is a scripting language that is first compiled into Monty bytecodes (Just like Python). The files containing Monty bytecodes usually have the .m extension.
+# Monty Interpreter by himza25
 
-Description
-This repository contains the source code for a Monty language interpreter written in C, conforming to a set of coding guidelines and requirements.
+## Table of Contents
 
-Compilation
-The code files should be compiled on Ubuntu 20.04 LTS using gcc with the options -Wall -Werror -Wextra -pedantic -std=c89.
+1. [Introduction](#introduction)
+2. [Technologies](#technologies)
+3. [Files](#files)
+4. [Usage](#usage)
+5. [Examples](#examples)
+6. [Author](#author)
 
-How to Compile
-bash
-Copy code
+## Introduction
+
+This repository contains the implementation of a Monty 0.98 scripting language interpreter. The language is a set of bytecode instructions that manipulate a stack data structure. The interpreter supports a variety of stack manipulation opcodes like `push`, `pop`, `pall`, `add`, and `sub`.
+
+## Technologies
+
+- C Programming Language
+- Compiled on Ubuntu 20.04 LTS using gcc with flags `-Wall -Werror -Wextra -pedantic -std=c89`
+- Code conforms to the Betty coding style
+
+## Files
+
+- `monty.h`: Header file containing all function prototypes and struct definitions.
+- `main.c`: Main function file.
+- `file_open.c`: File handling functions.
+- `file_read.c`: File reading and line parsing functions.
+- `opcode_exec.c`: Function to execute opcode.
+- `opcode_helpers1.c`: Helper functions for various opcodes (`push`, `pall`).
+- `opcode_helpers2.c`: Helper functions for additional opcodes (`add`, `sub`).
+- `stack_push.c`: Stack operation - push.
+- `stack_pop.c`: Stack operation - pop.
+- `error_general.c`: General error handling functions.
+- `error_specific.c`: Specific error handling functions.
+
+## Usage
+
+Compile the code and run the resulting executable with a Monty bytecode file as argument:
+
+```bash
 gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
-Usage
-After compilation, you can run the program as follows:
-
-bash
-Copy code
-./monty <filename.m>
-File Descriptions
-err.c: Contains functions for error handling
-err1.c: Contains additional functions for error handling
-err2.c: Contains more functions for error handling
-instr.c: Main file that handles instruction execution
-instr1.c: Additional functions for instruction handling
-instr2.c: Additional functions for instruction handling
-lf.c: Functions related to Last-In-First-Out (LIFO) concept
-monty.h: Header file containing function prototypes and struct definitions
-qu.c: Functions related to queues
-sstk.c: The main file responsible for running the Monty interpreter
-strng.c: Contains utility functions for string manipulation
-is.c: Contains functions to ignore spaces
-Structures Used
-stack_t: Doubly linked list representation of a stack (or queue)
-instruction_t: Opcode and its function for stack, queues, LIFO, FIFO
-Functions
-The project uses various custom functions to perform operations like push, pall, pint, pop, etc., as required by the Monty language specifications.
-
-Author
-Developed by himza25
-
-
+./monty bytecode_file.m

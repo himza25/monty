@@ -3,8 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -13,7 +11,6 @@
  * @next: points to the next element of the stack (or queue)
  *
  * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO
  */
 typedef struct stack_s
 {
@@ -28,7 +25,6 @@ typedef struct stack_s
  * @f: function to handle the opcode
  *
  * Description: opcode and its function
- * for stack, queues, LIFO, FIFO
  */
 typedef struct instruction_s
 {
@@ -36,46 +32,35 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * struct gbl - global variable for file and line reading
- * @file_read: file being read
- * @line_read: line being read
- * @type: type of operation
- *
- * Description: contains variables for file and line reading
- */
-typedef struct gbl
-{
-	FILE *file_read;
-	char *line_read;
-	char *type;
-} gbl;
+/* Global Variable */
+extern int global_variable;
 
-extern gbl v;
+/* General Error Handling Functions */
+void error_malloc(unsigned int line_number);
+void error_unknown_instruction(unsigned int line_number, char *opcode);
+void error_file_open(void);
 
-/* Function Prototypes */
-void gi(instruction_t *instructions);
-void ps(stack_t **stack, int n);
-void pl(stack_t **stack, unsigned int line_number);
-void pi(stack_t **stack, unsigned int line_number);
-void psh(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void sw(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void np(stack_t **stack, unsigned int line_number);
-void sb(stack_t **stack, unsigned int line_number);
-void dv(stack_t **stack, unsigned int line_number);
-void ml(stack_t **stack, unsigned int line_number);
-void md(stack_t **stack, unsigned int line_number);
-void pc(stack_t **stack, unsigned int line_number);
-void psr(stack_t **stack, unsigned int line_number);
-void rl(stack_t **stack, unsigned int line_number);
-void rr(stack_t **stack, unsigned int line_number);
-void qu(stack_t **stack, unsigned int line_number);
-void st(stack_t **stack, unsigned int line_number);
-char *is(char *old_line);
-void fd(stack_t *stack);
-int di(int c);
-int isi(char *s);
+/* Specific Error Handling Functions */
+void error_pop_on_empty(unsigned int line_number);
+void error_invalid_push_arg(unsigned int line_number);
+
+/* File Operations */
+void file_open(const char *filename);
+void file_read(FILE *fp, char **line, size_t *len, unsigned int *line_number, stack_t **stack);
+
+/* Opcode Execution */
+void opcode_exec(char *opcode, stack_t **stack, unsigned int line_number);
+
+/* Opcode Helpers */
+void opcode_helpers1(stack_t **stack, unsigned int line_number);
+void opcode_helpers2(stack_t **stack, unsigned int line_number);
+
+/* Stack Operations */
+void stack_push(stack_t **stack, unsigned int line_number, int value);
+void stack_pop(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **stack);
+
+/* Check if global_variable contains a valid integer */
+int is_valid_integer(void);
 
 #endif /* MONTY_H */
