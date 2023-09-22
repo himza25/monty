@@ -1,42 +1,68 @@
-# Monty Interpreter by himza25
+# Monty Bytecode Interpreter
+
+## Author
+- himza25
+
+---
 
 ## Table of Contents
-
 1. [Introduction](#introduction)
-2. [Technologies](#technologies)
-3. [Files](#files)
-4. [Usage](#usage)
-5. [Examples](#examples)
-6. [Author](#author)
+2. [Features](#features)
+3. [Installation](#installation)
+4. [File Descriptions](#file-descriptions)
+5. [Usage](#usage)
+6. [License](#license)
+
+---
 
 ## Introduction
 
-This repository contains the implementation of a Monty 0.98 scripting language interpreter. The language is a set of bytecode instructions that manipulate a stack data structure. The interpreter supports a variety of stack manipulation opcodes like `push`, `pop`, `pall`, `add`, and `sub`.
+This repository is dedicated to the Monty Bytecode Interpreter project, a simple stack and queue management program written in C. Designed as a learning exercise in data structures, file I/O, and C programming fundamentals.
 
-## Technologies
+---
 
-- C Programming Language
-- Compiled on Ubuntu 20.04 LTS using gcc with flags `-Wall -Werror -Wextra -pedantic -std=c89`
-- Code conforms to the Betty coding style
+## Features
+- Opcode implementation for stack and queue manipulation.
+- Error handling capabilities.
+- Betty compliant code style.
+- Compatible with Ubuntu 20.04 LTS.
 
-## Files
+---
 
-- `monty.h`: Header file containing all function prototypes and struct definitions.
-- `main.c`: Main function file.
-- `file_open.c`: File handling functions.
-- `file_read.c`: File reading and line parsing functions.
-- `opcode_exec.c`: Function to execute opcode.
-- `opcode_helpers1.c`: Helper functions for various opcodes (`push`, `pall`).
-- `opcode_helpers2.c`: Helper functions for additional opcodes (`add`, `sub`).
-- `stack_push.c`: Stack operation - push.
-- `stack_pop.c`: Stack operation - pop.
-- `error_general.c`: General error handling functions.
-- `error_specific.c`: Specific error handling functions.
+## Installation
 
-## Usage
-
-Compile the code and run the resulting executable with a Monty bytecode file as argument:
+To install, simply clone this repository and compile the `.c` files using `gcc`.
 
 ```bash
+git clone https://github.com/your_repo.git
 gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
-./monty bytecode_file.m
+For Vim users, you can easily navigate through the code using Vim's extensive feature set.
+
+File Descriptions
+Core Files
+monty.h
+The header file containing all the function prototypes and struct definitions necessary for the project.
+
+Functionality Implementations
+mod_ops.c
+Functions responsible for handling modulo, printing characters, printing strings, and rotating the stack.
+
+stack_ops.c
+Contains functions to push to stack and queue and to free a doubly linked list.
+
+state_ops.c
+Functions for changing the storing type between stack and queue.
+
+monty_main.c
+The main driver of the program, responsible for reading and interpreting the Monty bytecodes from a file.
+
+digit_check.c
+Contains utility functions to check for digits, _isdigit and isinteger included.
+
+Usage
+After compiling, execute the program using:
+
+bash
+Copy code
+./monty <filename.m>
+Replace <filename.m> with the actual file name containing Monty bytecodes.
